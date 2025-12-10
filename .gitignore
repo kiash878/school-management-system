@@ -1,0 +1,34 @@
+# Sensitive configuration files
+includes/config/config.php
+
+# Logs
+*.log
+payment_debug.log
+
+# Uploaded files (you may want to keep some of these)
+assets/uploads/*
+!assets/uploads/logo.jpg
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+tmp_*
+temp_*
+
+# Database dumps
+*.sql.backup
+*.sql.bak

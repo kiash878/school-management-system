@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - School Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        :root {
+            --primary-color: #010221;
+            --secondary-color: #0a7373;
+            --accent-color: #b7bf99;
+            --warning-color: #edaa25;
+            --danger-color: #c43302;
+            --text-dark: #010221;
+            --text-light: #6b7280;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-xxl: 4rem;
+            --space-md: 1.5rem;
+            --border-radius-xl: 25px;
+            --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="error-page">
+        <div class="error-container page-transition">
+            <div class="error-icon">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="error-code">404</div>
+            <h1 class="error-title">Oops! Page Not Found</h1>
+            <p class="error-message">
+                The page you're looking for seems to have wandered off to another classroom. 
+                Don't worry, even the best students sometimes get lost in the hallways!
+            </p>
+            <div class="error-actions">
+                <a href="index.php" class="btn btn-primary btn-lg">
+                    <i class="fas fa-home me-2"></i>Go Home
+                </a>
+                <a href="javascript:history.back()" class="btn btn-outline-secondary btn-lg">
+                    <i class="fas fa-arrow-left me-2"></i>Go Back
+                </a>
+            </div>
+            
+            <div class="mt-5">
+                <h5 class="mb-3" style="color: var(--text-dark);">Quick Links</h5>
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <a href="login.php" class="btn btn-sm btn-outline-primary">
+                        <i class="fas fa-sign-in-alt me-1"></i>Login
+                    </a>
+                    <a href="index.php#about" class="btn btn-sm btn-outline-secondary">
+                        <i class="fas fa-info-circle me-1"></i>About Us
+                    </a>
+                    <a href="index.php#contact" class="btn btn-sm btn-outline-warning">
+                        <i class="fas fa-envelope me-1"></i>Contact
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const errorIcon = document.querySelector('.error-icon');
+            const errorCode = document.querySelector('.error-code');
+            
+            // Animate the icon on hover
+            errorIcon.addEventListener('mouseenter', function() {
+                this.style.transform = 'rotate(360deg) scale(1.2)';
+                this.style.transition = 'all 0.5s ease';
+            });
+            
+            errorIcon.addEventListener('mouseleave', function() {
+                this.style.transform = 'rotate(0deg) scale(1)';
+            });
+            
+            // Add wobble effect to error code
+            let wobbleInterval;
+            errorCode.addEventListener('mouseenter', function() {
+                let wobbleCount = 0;
+                wobbleInterval = setInterval(() => {
+                    this.style.transform = `rotate(${Math.sin(wobbleCount) * 5}deg)`;
+                    wobbleCount += 0.3;
+                }, 50);
+            });
+            
+            errorCode.addEventListener('mouseleave', function() {
+                clearInterval(wobbleInterval);
+                this.style.transform = 'rotate(0deg)';
+                this.style.transition = 'transform 0.3s ease';
+            });
+        });
+    </script>
+</body>
+</html>

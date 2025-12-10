@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Error - School Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        :root {
+            --primary-color: #010221;
+            --secondary-color: #0a7373;
+            --accent-color: #b7bf99;
+            --warning-color: #edaa25;
+            --danger-color: #c43302;
+            --text-dark: #010221;
+            --text-light: #6b7280;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-xxl: 4rem;
+            --space-md: 1.5rem;
+            --border-radius-xl: 25px;
+            --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="error-page">
+        <div class="error-container page-transition">
+            <div class="error-icon">
+                <i class="fas fa-tools"></i>
+            </div>
+            <div class="error-code">500</div>
+            <h1 class="error-title">Something Went Wrong</h1>
+            <p class="error-message">
+                Our digital classroom is having some technical difficulties. 
+                Our IT team has been notified and is working to fix this issue. 
+                Please try again in a few moments.
+            </p>
+            <div class="error-actions">
+                <a href="javascript:location.reload()" class="btn btn-primary btn-lg">
+                    <i class="fas fa-redo me-2"></i>Try Again
+                </a>
+                <a href="index.php" class="btn btn-outline-secondary btn-lg">
+                    <i class="fas fa-home me-2"></i>Go Home
+                </a>
+            </div>
+            
+            <div class="mt-5 p-4" style="background: rgba(237, 170, 37, 0.1); border-radius: 15px; border-left: 4px solid var(--warning-color);">
+                <h6 style="color: var(--text-dark); margin-bottom: 1rem;">
+                    <i class="fas fa-info-circle me-2"></i>What you can do:
+                </h6>
+                <ul style="color: var(--text-light); margin: 0; padding-left: 1.5rem;">
+                    <li>Wait a few minutes and refresh the page</li>
+                    <li>Check your internet connection</li>
+                    <li>Contact support if the problem persists</li>
+                </ul>
+            </div>
+            
+            <div class="mt-4">
+                <small style="color: var(--text-light);">
+                    <i class="fas fa-clock me-1"></i>
+                    Error occurred at: <span id="error-time"></span>
+                </small>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Display current time
+        document.getElementById('error-time').textContent = new Date().toLocaleString();
+        
+        // Add some interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const errorIcon = document.querySelector('.error-icon');
+            
+            // Animate the tools icon
+            setInterval(() => {
+                errorIcon.style.transform = 'rotate(10deg)';
+                setTimeout(() => {
+                    errorIcon.style.transform = 'rotate(-10deg)';
+                    setTimeout(() => {
+                        errorIcon.style.transform = 'rotate(0deg)';
+                    }, 200);
+                }, 200);
+            }, 3000);
+            
+            // Auto-refresh option
+            let countdown = 30;
+            const refreshBtn = document.querySelector('.btn-primary');
+            const originalText = refreshBtn.innerHTML;
+            
+            const countdownInterval = setInterval(() => {
+                if (countdown > 0) {
+                    refreshBtn.innerHTML = `<i class="fas fa-redo me-2"></i>Auto refresh in ${countdown}s`;
+                    countdown--;
+                } else {
+                    clearInterval(countdownInterval);
+                    location.reload();
+                }
+            }, 1000);
+            
+            // Stop countdown if user clicks try again
+            refreshBtn.addEventListener('click', () => {
+                clearInterval(countdownInterval);
+                refreshBtn.innerHTML = originalText;
+            });
+        });
+    </script>
+</body>
+</html>
